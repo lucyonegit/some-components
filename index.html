@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>appdemo</title>
+    <style>
+    html,body{
+      width: 100%;
+      overflow:scroll;
+    } 
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    a{
+      text-decoration: none;
+    }
+    li{
+      list-style: none;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  
+  <script>
+    font();
+    window.onresize = function(){
+     font();
+    }
+    function font()
+    {     
+      var clientWidth = document.documentElement.clientWidth || window.innerWidth;  // 获取当前屏幕宽度
+      console.log(clientWidth);
+      var size = Math.floor( clientWidth / 650 * 100 );  // 根据宽度计算根节点字体大小
+      document.querySelector('html').style.fontSize = size + 'px';
+      
+    }
+  
+
+  </script>
+</html>
