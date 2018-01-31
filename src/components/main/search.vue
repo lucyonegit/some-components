@@ -44,7 +44,6 @@ export default {
     padding: 0 0 0 .2rem;
     border: 0;
     outline: none;
-   
   }
 .f img{
     width:0.3rem;
@@ -58,7 +57,6 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 .n img{
     width: .3rem;

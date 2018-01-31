@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="tt">
    <router-view id="rou"/>
    <bottombar id="bot"></bottombar>    <!--底部导航组件-->
   </div>
@@ -14,12 +14,17 @@ export default {
 </script>
 
 <style>
+#tt{
+  height: 100%;
+}
 #rou{
-  overflow: hidden;
-  padding-bottom: 1rem;
+  overflow: scroll;
+  height: 100%;
+  
 }
 #bot{
   position: fixed;
   bottom: 0;
+  z-index: 10000;
 }
 </style>

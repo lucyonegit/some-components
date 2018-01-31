@@ -21,6 +21,7 @@ export default {
 #to{
   position: fixed;
   top: 0;
+  z-index: 10000;
 }
 #ban{
   margin-top: .8rem;

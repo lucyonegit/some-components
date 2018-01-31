@@ -62,16 +62,34 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
 
     before(app){
-      app.get('/charge',function(req,res){
-            connection.query('SELECT * FROM product', function(err, rows, fields)
+          app.get('/charge',function(req,res){  //路由所有产品
+                connection.query('SELECT * FROM product', function(err, rows, fields)  
+                {
+                  if (err) throw err;   
+                  res.json(rows);      
+                });
+              //关闭连接connection.end();
+          }),
+          app.get('/list',function(req,res){  //请求菜单列表
+            connection.query('SELECT * FROM category', function(err, rows, fields)  
             {
-              if (err) throw err;
-              res.json(rows);
+              if (err) throw err;  
+              res.json(rows);      
             });
-          //关闭连接
-         // connection.end();
-      })
-    },
+          //关闭连接connection.end();
+          }),
+          app.get('/good',function(req,res){  //请求产品分类
+            var s =req.query.id;
+            console.log(s);
+            var st = "SELECT * FROM product WHERE category_id="+s;
+            connection.query(st, function(err, rows, fields)  
+            {
+              if (err) throw err;  
+              res.json(rows);      
+            });
+          //关闭连接connection.end();
+          })
+        },
   },
 
 

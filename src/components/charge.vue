@@ -1,60 +1,62 @@
 <template>
  <div class="main" >
-  <div class="it" v-for="(v,index) in rec" v-bind:key='index'>
-    <div class="pic"><img v-bind:src='v.product_img_url' alt="p"></div>
-    <div class="pro"></div>
-  </div>
- </div>
+    <div class="top"></div>
+    <sel v-on:getid="getgoods" id="sel"></sel>         <!--滚动选择栏组件--> 
+    <goodres  v-bind:goodid='ids' id="good"></goodres>   <!--商品列表栏组件--> 
+ </div> 
 </template>
 <script>
-import axios from 'axios'
+import sel from './sellectcharge/sel'
+import goodres from './sellectcharge/goods'
 export default {
   name:"ww",
   data(){
-    return {
-      rec:[],
+    return{
+      ids:1,
     }
   },
-  mounted(){
-    let that = this;
-    axios.get('/charge').then(function(res)
-    {
-      that.rec = res.data;
-      //console.log(res.data);
-      
-    }).catch(function(err){;})
-  }
+  methods:{
+    getgoods:function(data){
+      this.ids = data;
+    },
+  },
+  components:{sel,goodres},
+  
 }
 </script>
 <style scoped>
 .main{
   margin: 0;
   padding: 0;
-}
-.ss{
-  font-size: .14rem;
-}
+  overflow: hidden;
+  position: relative;
 
-.it{
+}
+.top{
   width: 100%;
-  height: 1.3rem;
+  height: .8rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  background-color: cadetblue;
+}
+#sel{
+  position: absolute;
+  width: 30%;
+  top: .8rem;
+  left: 0;
+  bottom: .9rem;
+  overflow: scroll;
+}
+#good{
+  position: absolute;
+  width: 70%;
+  top: .8rem;
+  left: 30%;
+  bottom: .9rem;
+  overflow: scroll;
+}
 
- padding: 0.05rem 0 0 0.05rem;
-}
-.pic{
-  width: 1.3rem;
-  height: 1.3rem;
-  float: left;
-}
-.pic img{
-  width: 100%;
-  height: 100%;
-}
-.pro{
-    width:100%;
-    height: 100%;
-
-    margin-left: 1.3rem;
-}
 
 </style>
