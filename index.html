@@ -35,10 +35,19 @@
     function font()
     {     
       var clientWidth = document.documentElement.clientWidth || window.innerWidth;  // 获取当前屏幕宽度
-      console.log(clientWidth);
-      var size = Math.floor( clientWidth / 650 * 100 );  // 根据宽度计算根节点字体大小
-      document.querySelector('html').style.fontSize = size + 'px';
-      
+      //console.log(clientWidth);
+      if(clientWidth>650)
+      {
+        document.querySelector('html').style.fontSize = 100 + 'px';
+      }
+      else if(clientWidth<350)
+      {
+        document.querySelector('html').style.fontSize = 50 + 'px';
+      }
+      else{
+        var size = Math.floor( clientWidth / 650 * 100 );  // 根据宽度计算根节点字体大小
+        document.querySelector('html').style.fontSize = size + 'px';
+      }
     }
   
 
