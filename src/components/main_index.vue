@@ -1,4 +1,3 @@
-
 <template>
   <div>
       <top id="to"></top>                   <!--顶部搜索框组件-->

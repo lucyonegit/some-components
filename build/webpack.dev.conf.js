@@ -68,7 +68,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
                   if (err) throw err;   
                   res.json(rows);      
                 });
-              //关闭连接connection.end();
+             
           }),
           app.get('/list',function(req,res){  //请求菜单列表
             connection.query('SELECT * FROM category', function(err, rows, fields)  
@@ -76,7 +76,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
               if (err) throw err;  
               res.json(rows);      
             });
-          //关闭连接connection.end();
+         
           }),
           app.get('/good',function(req,res){  //请求产品分类
             var s =req.query.id;
@@ -86,6 +86,35 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             {
               if (err) throw err;  
               res.json(rows);      
+            });
+          }),
+          app.get('/goodbyke',function(req,res){  //请求购物车数据
+            var st = "SELECT * FROM orders";
+            connection.query(st, function(err, rows, fields)  
+            {
+              if (err) throw err;  
+              res.json(rows);      
+            });
+          }),
+          app.get('/bykegood',function(req,res){  //请求购物车单个商品详情
+            var s = req.query.id;
+            var st = "SELECT * FROM product WHERE product_id="+s;
+            connection.query(st, function(err, rows, fields)  
+            {
+              if (err) throw err;  
+              res.json(rows);      
+            });
+          }),
+          app.get('/toorderdb',function(req,res){  //刷新购物车商品数量,总金额
+            var s = req.query.pid;
+            var d = req.query.count;
+            var a = req.query.allprice;
+            var st = "UPDATE orders SET ocount="+d+","+ "total_price="+ a +" "+"WHERE product_id="+s;
+            console.log(a);
+            connection.query(st, function(err, rows, fields)  
+            {
+              if (err) throw err;  
+              res.json(rows);    
             });
           //关闭连接connection.end();
           })

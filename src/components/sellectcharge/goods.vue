@@ -44,7 +44,6 @@ export default {
       this.getdata();
     },
   }
-  
 }
 </script>
 <style scoped>
@@ -72,9 +71,9 @@ export default {
   color: rgb(120,120,120);
 }
 .tu p{
-  padding: .1rem;
   height: .5rem;
-  width: 100%;
+  width: 94%;
+  padding: 3%;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;

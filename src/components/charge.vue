@@ -25,7 +25,7 @@ export default {
     },
   },
   created(){
-    if(localStorage.getItem('clickid') && localStorage.getItem('nowlist')){
+    if(localStorage.getItem('clickid') && localStorage.getItem('nowlist')){  //防止用户清空localtorage 初始化数据被覆盖
       this.ids = localStorage.getItem('clickid')    //获取商品列表状态
       this.list = localStorage.getItem('nowlist'); //获取滚动栏状态
     }

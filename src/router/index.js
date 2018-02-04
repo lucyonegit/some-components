@@ -34,6 +34,6 @@ export default new Router({
       path: '/charge',
       name: 'charge',                //产品分类请求
       component: charge,
-    }
+    },
   ]
 })
